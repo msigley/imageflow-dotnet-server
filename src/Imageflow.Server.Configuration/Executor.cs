@@ -124,7 +124,10 @@ internal class Executor : IAppConfigurator{
             }      
             
         }
-        
+        if (config.RouteDefaults?.ApplyDefaultCommandsToQuerylessUrls ?? false){
+            options.SetApplyDefaultCommandsToQuerylessUrls(true);
+        }
+
         // set security options
         var securityOptions = new SecurityOptions();
         if (config.Security?.MaxDecodeResolution != null){
