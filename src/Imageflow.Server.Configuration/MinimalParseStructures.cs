@@ -79,6 +79,7 @@ internal class LicenseSection : ITomlMetadataProvider, IValidationCapable
     public TomlPropertiesMetadata? PropertiesMetadata { get; set; }
     public string? Enforcement { get; set; }
     public string? Key { get; set; }
+    public string? MyOpenSourceProjectUrl { get; set; }
 
     public void Validate(ValidationContext c)
     {

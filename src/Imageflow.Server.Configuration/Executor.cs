@@ -80,6 +80,9 @@ internal class Executor : IAppConfigurator{
         if (config.License?.Key != null){
             options.SetLicenseKey(enforcementMethod, config.License.Key);
         }
+        if(config.License?.MyOpenSourceProjectUrl != null){
+            options.SetMyOpenSourceProjectUrl(config.License.MyOpenSourceProjectUrl);
+        }
 
         // set cache control
         if (config.RouteDefaults?.CacheControl != null){

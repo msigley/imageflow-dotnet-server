@@ -4,6 +4,7 @@ config_schema = 1
 [license]
 enforcement = "watermark" # or http_402_error/http_422_error, for fast failures
 key = """ """
+my_open_source_project_url = ""
 
 [route_defaults]
 prefix_case_sensitive = true
