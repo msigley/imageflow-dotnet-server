@@ -78,7 +78,7 @@ public class MinimalTomlTest
     // TODO: env.HOME expansion, and changing stuff up to avoid defaults causing false positive success
 
     internal static Dictionary<string, string> MINIMAL_TOML_EXPECTED_DEV = new(){
-         {"ImageflowMiddlewareOptions.MyOpenSourceProjectUrl", "https://i-need-a-license.com"},
+     {"ImageflowMiddlewareOptions.MyOpenSourceProjectUrl", "https://github.com"},
      {"ImageflowMiddlewareOptions.AllowCaching", "True"},
      {"ImageflowMiddlewareOptions.AllowDiskCaching", "True"},
      {"ImageflowMiddlewareOptions.MappedPaths[0]..VirtualPath", "/images/"},
@@ -87,6 +87,7 @@ public class MinimalTomlTest
      {"ImageflowMiddlewareOptions.MapWebRoot", "False"},
      {"ImageflowMiddlewareOptions.UsePresetsExclusively", "False"},
      {"ImageflowMiddlewareOptions.DefaultCacheControlString", "public, max-age=20"},
+     {"ImageflowMiddlewareOptions.ApplyDefaultCommandsToQuerylessUrls", "True"},
      {"ImageflowMiddlewareOptions.RequestSignatureOptions", "null"},
      {"ImageflowMiddlewareOptions.JobSecurityOptions.MaxDecodeSize.MaxWidth", "12000"},
      {"ImageflowMiddlewareOptions.JobSecurityOptions.MaxDecodeSize.MaxHeight", "12000"},
@@ -126,7 +127,7 @@ public class MinimalTomlTest
 
 
     internal static Dictionary<string, string> MINIMAL_TOML_EXPECTED_PROD = new(){
-     {"ImageflowMiddlewareOptions.MyOpenSourceProjectUrl", "https://i-need-a-license.com"},
+     {"ImageflowMiddlewareOptions.MyOpenSourceProjectUrl", "https://github.com"},
      {"ImageflowMiddlewareOptions.AllowCaching", "True"},
      {"ImageflowMiddlewareOptions.AllowDiskCaching", "True"},
      {"ImageflowMiddlewareOptions.MappedPaths[0]..VirtualPath", "/images/"},
@@ -135,6 +136,7 @@ public class MinimalTomlTest
      {"ImageflowMiddlewareOptions.MapWebRoot", "False"},
      {"ImageflowMiddlewareOptions.UsePresetsExclusively", "False"},
      {"ImageflowMiddlewareOptions.DefaultCacheControlString", "public, max-age=20"},
+     {"ImageflowMiddlewareOptions.ApplyDefaultCommandsToQuerylessUrls", "True"},
      {"ImageflowMiddlewareOptions.RequestSignatureOptions", "null"},
      {"ImageflowMiddlewareOptions.JobSecurityOptions.MaxDecodeSize.MaxWidth", "12000"},
      {"ImageflowMiddlewareOptions.JobSecurityOptions.MaxDecodeSize.MaxHeight", "12000"},
@@ -174,7 +176,7 @@ public class MinimalTomlTest
 
 
     internal static Dictionary<string, string> MINIMAL_TOML_EXPECTED_STAGING = new(){
-     {"ImageflowMiddlewareOptions.MyOpenSourceProjectUrl", "https://i-need-a-license.com"},
+     {"ImageflowMiddlewareOptions.MyOpenSourceProjectUrl", "https://github.com"},
      {"ImageflowMiddlewareOptions.AllowCaching", "True"},
      {"ImageflowMiddlewareOptions.AllowDiskCaching", "True"},
      {"ImageflowMiddlewareOptions.MappedPaths[0]..VirtualPath", "/images/"},
@@ -183,6 +185,7 @@ public class MinimalTomlTest
      {"ImageflowMiddlewareOptions.MapWebRoot", "False"},
      {"ImageflowMiddlewareOptions.UsePresetsExclusively", "False"},
      {"ImageflowMiddlewareOptions.DefaultCacheControlString", "public, max-age=20"},
+     {"ImageflowMiddlewareOptions.ApplyDefaultCommandsToQuerylessUrls", "True"},
      {"ImageflowMiddlewareOptions.RequestSignatureOptions", "null"},
      {"ImageflowMiddlewareOptions.JobSecurityOptions.MaxDecodeSize.MaxWidth", "12000"},
      {"ImageflowMiddlewareOptions.JobSecurityOptions.MaxDecodeSize.MaxHeight", "12000"},
@@ -226,12 +229,14 @@ config_schema = '1.0'
 [license]
 enforcement = "http_402_error" # or http_402_error/http_422_error, for fast failures
 key = """ """
+my_open_source_project_url = "https://github.com"
 
 [route_defaults]
 prefix_case_sensitive = false
 lowercase_path_remainder = true
 cache_control = "public, max-age=20"
 apply_default_commands = "quality=76"
+apply_default_commands_to_queryless_urls = true
 
 [[routes]]
 prefix = '/images/'
